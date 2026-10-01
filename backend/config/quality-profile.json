@@ -1,0 +1,82 @@
+{
+  "version": 2,
+  "mode": "enforce",
+  "capture": {
+    "samplingIntervalMs": 180,
+    "analysisSize": 1280,
+    "stableFrames": 4,
+    "maxCornerMotion": 0.012,
+    "burstFrames": 3,
+    "autoCapture": true,
+    "stillCapture": false,
+    "idealVideoWidth": 3840,
+    "jpegQuality": 0.95
+  },
+  "document": {
+    "minFill": 0.4,
+    "maxFill": 0.97,
+    "edgeMargin": 0.012,
+    "aspectTolerance": 0.14,
+    "maxAngleDeviation": 6,
+    "maxSideRatio": 1.22,
+    "minDpi": 220
+  },
+  "image": {
+    "minSharpness": 40,
+    "minSharpnessLive": 40,
+    "minMotionIsotropy": 0.3,
+    "minFocusUniformity": 0.15,
+    "exposureMin": 105,
+    "exposureMax": 225,
+    "maxHighlightClip": 0.01,
+    "maxShadowClip": 0.12,
+    "minContrast": 0.35,
+    "maxGlareRatio": 0.001,
+    "maxGlareBlob": 0.006,
+    "minIllumination": 0.7,
+    "maxNoise": 6
+  },
+  "severity": {
+    "document_found": "block",
+    "document_inside": "block",
+    "document_fill": "block",
+    "aspect_ratio": "block",
+    "perspective": "block",
+    "stability": "block",
+    "resolution": "block",
+    "sharpness": "block",
+    "motion_blur": "warn",
+    "focus_uniformity": "warn",
+    "exposure": "block",
+    "highlights": "block",
+    "shadows_clipped": "warn",
+    "contrast": "warn",
+    "glare": "block",
+    "illumination": "block",
+    "noise": "warn"
+  },
+  "preprocess": {
+    "enabled": true,
+    "targetDpi": 400,
+    "marginRatio": 0.015,
+    "illuminationStrength": 0,
+    "whiteBalance": false,
+    "claheClipLimit": 0,
+    "claheTileGrid": 8,
+    "denoiseAboveNoise": 100,
+    "sharpenAmount": 0,
+    "sharpenSigma": 1,
+    "jpegQuality": 95
+  },
+  "orb": {
+    "ratioThreshold": 0.75,
+    "minimumGoodMatches": 18,
+    "minimumInlierRatio": 0.42,
+    "ransacThreshold": 4,
+    "minSpatialCoverage": 0.08,
+    "maxReprojectionError": 8,
+    "projectionMinAreaRatio": 0.3,
+    "projectionMaxAreaRatio": 2.2,
+    "projectionMarginRatio": 0.35
+  }
+}

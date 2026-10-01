@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <rect width="1400" height="900" fill="#dfded8"/>
+  <rect x="45" y="45" width="1310" height="810" rx="28" fill="#fff" stroke="#171915" stroke-width="9"/>
+  <text x="95" y="135" font-family="Arial" font-size="52" font-weight="700">REPUBLIQUE ALGERIENNE</text>
+  <circle cx="230" cy="420" r="118" fill="#aeb4ad" stroke="#171915" stroke-width="7"/>
+  <text x="420" y="310" font-family="Arial" font-size="54">BENALI AMINE</text>
+  <text x="420" y="400" font-family="Arial" font-size="42">100012345678901234</text>
+  <path d="M95 650h1200M95 710h920M95 770h1080" stroke="#171915" stroke-width="15"/>
+</svg>

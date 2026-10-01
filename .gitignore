@@ -1,0 +1,11 @@
+.env
+.npm-cache/
+**/node_modules/
+**/.next/
+**/dist/
+**/*.tsbuildinfo
+*.log
+templates/
+backend/.local/
+frontend/AGENTS.md
+frontend/CLAUDE.md

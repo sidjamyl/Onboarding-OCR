@@ -1,0 +1,22 @@
+name: Deploy onboarding
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: onboarding-server-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, linux, x64, ocr-onboarding]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy
+        run: bash ops/deploy.sh

@@ -1,0 +1,18 @@
+{
+  "name": "@ocr-algeria/onboarding",
+  "private": true,
+  "scripts": {
+    "format": "biome format --write backend/src backend/test frontend/src",
+    "format:check": "biome format backend/src backend/test frontend/src",
+    "lint": "biome lint backend/src backend/test frontend/src",
+    "typecheck": "npm --prefix backend run typecheck && npm --prefix frontend run typecheck",
+    "test": "npm --prefix backend test && npm --prefix frontend test",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build",
+    "sync:consistency-core": "node scripts/sync-consistency-core.mjs",
+    "sync:quality-core": "node scripts/sync-quality-core.mjs"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.7"
+  }
+}
