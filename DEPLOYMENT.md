@@ -6,9 +6,10 @@ PostgreSQL, MinIO and template volumes use the fixed Compose project name
 
 ## One-time server setup
 
-1. Clone `git@github.com:sidjamyl/Onboarding-OCR.git` into
-   `/home/admin/ocr-onboarding`. Create `/home/admin/ocr-config/onboarding.env`
-   from `.env.example` with mode `600`. Choose unique values for all passwords,
+1. Create `/home/admin/ocr-config/onboarding.env` from `.env.example` with
+   mode `600`. The GitHub Actions runner checks out this private repository
+   using its job token; the server's Gateway deploy key cannot access it and
+   no second deploy key is needed for this deployment path. Choose unique values for all passwords,
    API keys and `BETTER_AUTH_SECRET`. Set `ONBOARDING_DATA_DIR` to an absolute
    persistent host path, such as `/home/admin/ocr-onboarding-data`. Run the
    deployment as `admin` after granting that user Docker access and reconnecting;
@@ -17,10 +18,15 @@ PostgreSQL, MinIO and template volumes use the fixed Compose project name
    on that Tailscale address, and set `OCR_BASIC_USERNAME` and
    `OCR_BASIC_PASSWORD` to a user from the Gateway's private
    `BASIC_AUTH_USERS`. Keep the backend port bound to `127.0.0.1`.
-3. Run `ONBOARDING_ENV_FILE=/home/admin/ocr-config/onboarding.env bash
-   ops/deploy.sh` from the onboarding checkout. Verify the homepage and
-   `/healthz` locally, then create the first administrator using
-   `ADMINISTRATION.md`.
+3. Register the `ocr-onboarding` runner described below after the private
+   environment file and persistent directory are ready. The queued push job
+   (or a manual **Run workflow** action) checks out the code and runs
+   `ops/deploy.sh`. Verify the homepage and `/healthz` locally, then create
+   the first administrator with
+   `docker exec -it ocr-onboarding-backend-1 npm run admin:create -- admin@your-company.example`.
+   The generated password is written under
+   `$ONBOARDING_DATA_DIR/admin/admin-access.txt`; move it to a password manager
+   and delete the file.
 4. Expose only the frontend through HTTPS. If the tailnet administrator has
    enabled HTTPS, Tailscale Serve can proxy its HTTPS name to
    `http://127.0.0.1:3000`. Set `PUBLIC_BASE_URL` to that exact HTTPS origin

@@ -21,7 +21,7 @@ With the Compose stack configured and built, run from `onboarding`:
 docker compose run --rm backend npm run admin:create -- admin@your-company.example
 ```
 
-Provisioning generates a password and writes it to `.local/admin-access.txt`, without printing it. The Compose mount makes that file available on the host at `onboarding/.local/admin/admin-access.txt`. Move the password to your password manager and remove the file. `ADMIN_PASSWORD` can supply a password of at least 12 characters through the process environment. Attempting to provision an existing email fails without changing its credentials.
+Provisioning generates a password and writes it to `.local/admin-access.txt`, without printing it. The Compose mount makes that file available on the host at `${ONBOARDING_DATA_DIR:-./backend/.local}/admin/admin-access.txt`. Move the password to your password manager and remove the file. `ADMIN_PASSWORD` can supply a password of at least 12 characters through the process environment. Attempting to provision an existing email fails without changing its credentials.
 
 Better Auth owns password hashing, signed HttpOnly session cookies, sign-in and sign-out. Only provisioned users with the server-controlled `isAdmin` flag can use administration endpoints. Sessions last eight hours. Administration mutations require the configured origin. Login rate limiting uses a server-derived socket address; deployments using the Next.js proxy share its backend address and therefore its per-path rate-limit bucket.
 
